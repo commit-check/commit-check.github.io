@@ -1,5 +1,6 @@
 <nav class="site-nav">
   <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="current"{% endif %}>Home</a>
+  <a href="{{ '/quick-start/' | relative_url }}" {% if page.url contains '/quick-start/' %}class="current"{% endif %}>Quick Start</a>
   <a href="{{ '/commit-check/' | relative_url }}" {% if page.url contains '/commit-check/' %}class="current"{% endif %}>Commit Check Tool</a>
   <a href="{{ '/commit-check-action/' | relative_url }}" {% if page.url contains '/commit-check-action/' %}class="current"{% endif %}>GitHub Action</a>
   <a href="https://github.com/commit-check" target="_blank">GitHub</a>

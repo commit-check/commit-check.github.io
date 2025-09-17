@@ -257,6 +257,10 @@ jobs:
 
 Versioning follows [Semantic Versioning](https://semver.org/).
 
+## Troubleshooting
+
+Having issues? Check out our [Troubleshooting Guide](troubleshooting/) for common problems and solutions.
+
 ## Have questions or feedback?
 
 To provide feedback (requesting a feature or reporting a bug), please post to [issues](https://github.com/commit-check/commit-check/issues).

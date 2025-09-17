@@ -33,6 +33,8 @@ As an alternative to GitHub Enterprise [Metadata restrictions](https://docs.gith
 
 To customize the behavior, create a config file `.commit-check.yml` under your repository's root directory, e.g., [.commit-check.yml](https://github.com/commit-check/commit-check/blob/main/.commit-check.yml)
 
+For detailed configuration options, see the [Configuration Guide](configuration/).
+
 ## Usage
 
 ### Running as GitHub Action
@@ -78,7 +80,7 @@ pip install git+https://github.com/commit-check/commit-check.git@main
 
 Then, run `commit-check --help` or `cchk --help` (alias for `commit-check`) from the command line.
 
-For more information, see the [CLI arguments documentation](cli-args.html).
+For more information, see the [CLI arguments documentation](cli-args/) and [Configuration Guide](configuration/).
 
 ### Running as Git Hooks
 

@@ -7,6 +7,10 @@ title: Commit Check Documentation
 
 Welcome to the central documentation site for the Commit Check organization. Commit Check provides powerful tools for enforcing commit metadata standards across your development workflow.
 
+## 🚀 [Quick Start Guide](quick-start/)
+
+New to Commit Check? Get up and running in minutes with our [Quick Start Guide](quick-start/).
+
 ## Available Tools
 
 ### [Commit Check Tool](commit-check/)
