@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  
+  <style>
+    .site-nav {
+      background: #f8f9fa;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .site-nav a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 500;
+    }
+    .site-nav a:hover {
+      text-decoration: underline;
+    }
+    .site-nav a.current {
+      color: #495057;
+      font-weight: bold;
+    }
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .footer {
+      margin-top: 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid #e9ecef;
+      text-align: center;
+      color: #6c757d;
+    }
+  </style>
+</head>
+
+<body>
+  {% include navigation.html %}
+  
+  <div class="content">
+    <main class="page-content" aria-label="Content">
+      {{ content }}
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; {{ site.time | date: '%Y' }} Commit Check. Licensed under the MIT License.</p>
+  </footer>
+</body>
+</html>
