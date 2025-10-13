@@ -28,14 +28,14 @@ Select the method that best fits your development workflow:
 
     [Get started with pre-commit →](https://commit-check.github.io/commit-check/example.html#running-as-pre-commit-hook){ .md-button .md-button--primary }
 
-- :fontawesome-brands-python: **Command Line**
+- :fontawesome-brands-python: **Command Line Interface (CLI)**
 
     ---
 
-    Core Python package for commit-check-action behind the scenes
+    The core Python package powering commit-check-action behind the scenes
 
-    **Perfect for:** Custom scripts, advanced users, integration in various environments
+    **Perfect for:** Custom scripts, advanced workflows, and integration across different environments
 
-    [Get started with commit-check package →](https://commit-check.github.io/commit-check/){ .md-button .md-button--primary }
+    [Get started with CLI →](https://commit-check.github.io/commit-check/){ .md-button .md-button--primary }
 
 </div>
