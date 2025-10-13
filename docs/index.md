@@ -14,23 +14,23 @@ title: Commit Check
 
 <div class="grid cards" markdown>
 
-- :material-chart-line: **Built in Open Source**
+- :material-chart-line: **Free & Powerful**
 
     ---
 
-    Open-source and MIT-licensed. Bringing contributors together to empower impactful commit-check projects in open source and beyond.
+    A fully open-source solution for validating commits, branches, and more — simple, reliable, and community-driven.
 
 - :material-cog: **Zero Configuration**
 
     ---
 
-    Works out of the box with sensible defaults. Advanced users can customize every aspect to match their commit and branch standards.
+    Works right out of the box with smart defaults. Power users can easily customize rules to fit their team’s workflow.
 
 - :material-devices: **Works Everywhere**
 
     ---
 
-    GitHub Actions, Pre-commit, Command Line – integrate anywhere your code lives.
+    GitHub Actions, pre-commit hooks, or the command line — integrate Commit Check anywhere your code lives.
 
 </div>
 
@@ -100,17 +100,17 @@ title: Commit Check
 
 === "GitHub Actions"
 
-    Add commit-check-action to your workflow in seconds:
+    Add Commit Check Action to your workflow in seconds:
 
     ```yaml
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.pull_request.head.sha }}  # checkout PR HEAD commit
-          fetch-depth: 0  # required for merge-base check
+          ref: ${{ github.event.pull_request.head.sha }}  # Checkout PR HEAD commit
+          fetch-depth: 0  # Required for merge-base checks
       - uses: commit-check/commit-check-action@v2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # use GITHUB_TOKEN because use of pr-comments
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed for PR comments
         with:
           message: true
           branch: true
@@ -122,12 +122,12 @@ title: Commit Check
 
 === "Pre-commit"
 
-    Add to your `.pre-commit-config.yaml`:
+    Add Commit Check to your `.pre-commit-config.yaml`:
 
     ```yaml
     repos:
       repo: https://github.com/commit-check/commit-check
-      rev: the tag or revision
+      rev: <tag or revision>
       hooks:
       -   id: check-message
       -   id: check-branch
@@ -148,8 +148,10 @@ title: Commit Check
     # Validate message from file
     commit-check -m commit_message.txt
 
-    # Validate current git commit message (from git log)
+    # Validate the latest git commit message
     commit-check -m
+
+    # And more...
     ```
 
 ---
@@ -158,7 +160,7 @@ title: Commit Check
 
 ## Join Our Community
 
-**Be part of a growing ecosystem of Commit Check developers who care about code quality.**
+**Be part of a growing ecosystem of developers who care about Commit Check.**
 
 [GitHub Issue :fontawesome-brands-github:](https://github.com/commit-check/commit-check/issues){ .md-button }
 [GitHub Pull Request :fontawesome-brands-github:](https://github.com/commit-check/commit-check/pulls){ .md-button }
