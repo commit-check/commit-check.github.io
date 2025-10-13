@@ -42,7 +42,7 @@ title: Commit Check
 
 <div class="trusted-by" markdown>
 
-**Join thousands of developers and organizations using cpp-linter in production**
+**Join thousands of developers and organizations using commit-check in production**
 
 <div class="logo-grid">
   <div class="logo-item">
@@ -162,7 +162,7 @@ title: Commit Check
 
 [GitHub Issue :fontawesome-brands-github:](https://github.com/commit-check/commit-check/issues){ .md-button }
 [GitHub Pull Request :fontawesome-brands-github:](https://github.com/commit-check/commit-check/pulls){ .md-button }
-<!-- [Discord Community :fontawesome-brands-discord:](https://discord.gg/cpp-linter){ .md-button }
-[Stack Overflow :fontawesome-brands-stack-overflow:](https://stackoverflow.com/questions/tagged/cpp-linter){ .md-button } -->
+<!-- [Discord Community :fontawesome-brands-discord:](https://discord.gg/commit-check){ .md-button }
+[Stack Overflow :fontawesome-brands-stack-overflow:](https://stackoverflow.com/questions/tagged/commit-check){ .md-button } -->
 
 </div>
