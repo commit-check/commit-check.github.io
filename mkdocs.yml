@@ -3,7 +3,7 @@ site_description: "Automated, configurable, and reliable commit validation for p
 site_url: "https://commit-check.github.io/"
 repo_url: https://github.com/commit-check
 repo_name: "commit-check"
-copyright: "© 2021-2025, commit-check"
+copyright: "© Copyright 2022 - 2025, shenxianpeng."
 
 nav:
   - Home: index.md

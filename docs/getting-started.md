@@ -2,8 +2,6 @@
 
 Welcome to commit-check! This guide will help you integrate commit-check into your workflow quickly and efficiently.
 
-## Choose Your Integration
-
 <!-- markdownlint-disable MD033 -->
 
 Select the method that best fits your development workflow:
