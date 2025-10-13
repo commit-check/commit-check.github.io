@@ -18,7 +18,7 @@ Select the method that best fits your development workflow:
 
     **Perfect for:** CI/CD pipelines, automated PRs, team collaboration
 
-    [Get started with GitHub Actions →](https://commit-check.github.io/commit-check-action/){ .md-button .md-button--primary }
+    [Get started with GitHub Actions →](https://github.com/commit-check/commit-check-action){ .md-button .md-button--primary }
 
 - :material-git: **Pre-commit Hooks**
 
@@ -28,7 +28,7 @@ Select the method that best fits your development workflow:
 
     **Perfect for:** Local development, enforcing commit standards before commits
 
-    [Get started with pre-commit →](https://github.com/commit-check/commit-check){ .md-button .md-button--primary }
+    [Get started with pre-commit →](https://commit-check.github.io/commit-check/example.html#running-as-pre-commit-hook){ .md-button .md-button--primary }
 
 - :fontawesome-brands-python: **Command Line**
 

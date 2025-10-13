@@ -7,6 +7,25 @@ th {
     --commit-check-logo-color-yellow: #ffffff;
 }
 
+/* Custom theme colors to match commit-check branding */
+:root {
+    --md-primary-fg-color: #009485;
+    --md-primary-fg-color--light: #00a893;
+    --md-primary-fg-color--dark: #008077;
+}
+
+[data-md-color-scheme="default"] {
+    --md-primary-fg-color: #009485;
+    --md-primary-fg-color--light: #00a893;
+    --md-primary-fg-color--dark: #008077;
+}
+
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #009485;
+    --md-primary-fg-color--light: #00a893;
+    --md-primary-fg-color--dark: #008077;
+}
+
 /* Hero section styling */
 .hero {
     text-align: center;
