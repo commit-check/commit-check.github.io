@@ -22,9 +22,9 @@ theme:
     - toc.integrate
     - navigation.top
     - navigation.sections
-  logo: static/logo.png
   favicon: static/favicon.ico
   icon:
+    logo: material/git
     repo: fontawesome/brands/github
   palette:
     # Palette toggle for automatic mode
