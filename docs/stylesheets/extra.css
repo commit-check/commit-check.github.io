@@ -3,27 +3,27 @@ th {
 }
 
 :root > * {
-    --commit-check-logo-color-green: #009485;
+    --commit-check-logo-color-blue: #2c9ccd;
     --commit-check-logo-color-yellow: #ffffff;
 }
 
 /* Custom theme colors to match commit-check branding */
 :root {
-    --md-primary-fg-color: #009485;
-    --md-primary-fg-color--light: #00a893;
-    --md-primary-fg-color--dark: #008077;
+    --md-primary-fg-color: #2c9ccd;
+    --md-primary-fg-color--light: #3badda;
+    --md-primary-fg-color--dark: #258bb8;
 }
 
 [data-md-color-scheme="default"] {
-    --md-primary-fg-color: #009485;
-    --md-primary-fg-color--light: #00a893;
-    --md-primary-fg-color--dark: #008077;
+    --md-primary-fg-color: #2c9ccd;
+    --md-primary-fg-color--light: #3badda;
+    --md-primary-fg-color--dark: #258bb8;
 }
 
 [data-md-color-scheme="slate"] {
-    --md-primary-fg-color: #009485;
-    --md-primary-fg-color--light: #00a893;
-    --md-primary-fg-color--dark: #008077;
+    --md-primary-fg-color: #2c9ccd;
+    --md-primary-fg-color--light: #3badda;
+    --md-primary-fg-color--dark: #258bb8;
 }
 
 /* Hero section styling */
