@@ -42,7 +42,7 @@ title: Commit Check
 
 <div class="trusted-by" markdown>
 
-**Join thousands of developers and organizations using commit-check in production**
+**Used by developers and organizations worldwide in their production workflows.**
 
 <div class="logo-grid">
   <div class="logo-item">
