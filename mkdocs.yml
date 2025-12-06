@@ -74,6 +74,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/commit-check
-  # analytics:
-  #   provider: google
-  #   property: G-JKH4SXC7HC
+  analytics:
+    provider: google
+    property: G-TSR5L4JL2V
