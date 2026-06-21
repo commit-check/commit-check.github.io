@@ -12,10 +12,9 @@ authors:
 
 # One policy file for your Git history
 
-Every team eventually writes the same wiki page: "How we write commit
-messages." It lists a commit convention, a branch naming scheme, a rule about
-signing off, and a plea to keep author emails consistent. Then nobody reads it,
-and the rules quietly rot.
+Most teams have a wiki page titled something like "How we write commit
+messages." It covers commit conventions, branch naming, sign-offs, and
+author email consistency — and then nobody reads it.
 
 **Commit Check** exists to turn that wiki page into something Git actually
 enforces.
@@ -33,9 +32,9 @@ commit that live around your code rather than inside it:
 - **Sign-off trailers** — `Signed-off-by` for DCO workflows
 - **Push safety** — catch accidental force-pushes before they rewrite history
 
-The important word is *policy*. Instead of scattering these rules across a CI
-script here, a pre-commit hook there, and a half-remembered convention
-everywhere, you write them **once** in a versioned `cchk.toml`.
+That word — *policy* — matters. Instead of scattering rules across a CI
+script, a pre-commit hook, and a stale convention doc, you write them
+**once** in a versioned `cchk.toml`.
 
 ## Write it once, enforce it everywhere
 
@@ -54,7 +53,7 @@ The same `cchk.toml` then drives:
 
 Because the policy is committed alongside your code, it is reviewed, diffed, and
 versioned like everything else. When the rules change, the change shows up in a
-pull request — not in a Slack message that scrolls away.
+pull request.
 
 ## Zero configuration to start
 
@@ -68,9 +67,9 @@ convention. That is enough to get value on day one.
 echo "feat: add streaming support" | commit-check -m
 ```
 
-When you are ready to tighten things up — a maximum subject length, required
-sign-off, an allow-list of commit types — you add a `cchk.toml` and grow into
-it. We will cover that in the next post.
+When you need stricter rules — a maximum subject length, required sign-off,
+or an allow-list of commit types — add a `cchk.toml`. The next post walks
+through the details.
 
 ## Add the badge
 

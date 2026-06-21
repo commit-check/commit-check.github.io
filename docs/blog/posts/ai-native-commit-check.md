@@ -15,8 +15,8 @@ authors:
 # AI-native: JSON output and a Python API
 
 More and more commits are written — or at least drafted — by AI agents and
-automation. So Commit Check is built to be *consumed* by machines, not only
-read by humans squinting at ASCII art in a terminal. This post covers the two
+automation. So Commit Check is also built for machines — not just humans reading
+terminal output. This post covers the two
 features that make that possible: machine-readable JSON output and an
 import-friendly Python API.
 
@@ -42,7 +42,7 @@ echo "feat: add streaming support" | commit-check -m --format json
 }
 ```
 
-The interesting case is failure. Each failing check carries the full `error`
+When a check fails, each result carries the full `error`
 and `suggest` fields an agent needs to **self-correct** — no scraping required:
 
 ```bash
@@ -64,8 +64,8 @@ echo "wip bad commit" | commit-check -m --format json
 }
 ```
 
-Feed that `suggest` string straight back to an LLM and it has everything it
-needs to rewrite the message and try again.
+Pass the `suggest` string back to an LLM, and it has what it needs to
+rewrite the message and retry.
 
 ## Quieter text, for humans
 
@@ -87,10 +87,10 @@ echo "wip bad commit" | commit-check -m --compact
 
 ## The Python API — no subprocess needed
 
-For tools and agents already running in Python, spawning a subprocess just to
-validate a string is wasteful. The `commit_check.api` module exposes a
-lightweight interface that returns plain dicts — easy to serialize, forward to
-an LLM, or chain into a larger workflow:
+For tools and agents running in Python, spawning a subprocess to validate
+a string adds unnecessary overhead. The `commit_check.api` module exposes
+functions that return plain dicts — easy to serialize, forward to an LLM,
+or chain into a larger workflow:
 
 ```python
 from commit_check.api import validate_message, validate_branch, validate_all
@@ -112,5 +112,5 @@ automated one — and gives that agent the precise feedback it needs to fix its
 own mistakes. One `cchk.toml`, enforced identically whether the author is a
 person, a CI job, or a model.
 
-Read the full AI-native guide in the
+Read more in the
 [README](https://github.com/commit-check/commit-check#ai-native-usage).

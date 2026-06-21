@@ -14,9 +14,8 @@ authors:
 # From zero-config to org-wide policy
 
 Commit Check works the moment you install it, but its real strength shows up
-when you start shaping the policy to fit your team. This post walks from the
-default behavior all the way to a configuration shared across an entire
-organization.
+when you start shaping the policy to fit your team. This post covers everything from the default behavior to organization-wide
+shared configuration.
 
 <!-- more -->
 
@@ -84,9 +83,9 @@ loosen a shared rule without forking the whole policy.
 
 ## Share one policy across many repos
 
-The feature that turns Commit Check from a per-repo tool into an
-organizational standard is `inherit_from`. Point each repository at a base
-config and override only what differs:
+`inherit_from` is the feature that makes Commit Check work across an
+organization. Point each repository at a base config and override only what
+differs:
 
 ```toml
 # .github/cchk.toml — inherit the org base, then adjust locally
@@ -123,15 +122,14 @@ repos:
         stages: [pre-push]
 ```
 
-One note worth repeating from the docs: piping `git push` into `commit-check`
-is **not** a prevention mechanism. By then the push has already started, and
-standard `git push` output doesn't carry the ref metadata the check relies on.
-Use the `pre-push` hook instead.
+A note: piping `git push` into `commit-check` is **not** a prevention
+mechanism — by then the push has already started. Use the `pre-push` hook
+instead.
 
-## The takeaway
+## Summary
 
 Start with zero config, add a `cchk.toml` when you want stricter rules, and
 reach for `inherit_from` when you want one standard across every repository.
-Same engine, same file format, growing with your team.
+Same engine, same file format, scaling with your team.
 
 Full reference: <https://commit-check.github.io/commit-check/configuration.html>
