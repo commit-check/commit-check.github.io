@@ -77,6 +77,42 @@ title: Commit Check
     <img src="https://github.com/RLinf.png" alt="RLinf" title="RLinf">
     <span>RLinf</span>
   </div>
+  <div class="logo-item">
+    <img src="https://github.com/istio-ecosystem.png" alt="Istio Ecosystem" title="Istio Ecosystem">
+    <span>Istio Ecosystem</span>
+  </div>
+  <div class="logo-item">
+    <img src="https://github.com/Juniper.png" alt="Juniper Networks" title="Juniper Networks">
+    <span>Juniper Networks</span>
+  </div>
+  <div class="logo-item">
+    <img src="https://github.com/PnX-SI.png" alt="French National Parks" title="French National Parks">
+    <span>French National Parks</span>
+  </div>
+  <div class="logo-item">
+    <img src="https://github.com/OpenDriveLab.png" alt="OpenDriveLab" title="OpenDriveLab">
+    <span>OpenDriveLab</span>
+  </div>
+  <div class="logo-item">
+    <img src="https://github.com/UT-Austin-RobIn.png" alt="UT Austin RobIn" title="UT Austin RobIn">
+    <span>UT Austin RobIn</span>
+  </div>
+  <div class="logo-item">
+    <img src="https://github.com/WorldArena2.png" alt="WorldArena2" title="WorldArena2">
+    <span>WorldArena2</span>
+  </div>
+  <div class="logo-item">
+    <img src="https://github.com/moniqohq.png" alt="moniqo" title="moniqo">
+    <span>moniqo</span>
+  </div>
+  <div class="logo-item">
+    <img src="https://github.com/elumobility.png" alt="elu mobility" title="elu mobility">
+    <span>elu mobility</span>
+  </div>
+  <div class="logo-item">
+    <img src="https://github.com/OpenEnergyPlatform.png" alt="Open Energy Platform" title="Open Energy Platform">
+    <span>Open Energy Platform</span>
+  </div>
 </div>
 
 <!-- <div class="stats-grid">
