@@ -3,7 +3,7 @@ site_description: "Clean commits. Clear standards."
 site_url: "https://commit-check.github.io/"
 repo_url: https://github.com/commit-check
 repo_name: "commit-check"
-copyright: "© Copyright 2022 - 2025, shenxianpeng."
+copyright: "© Copyright 2022 - 2026, shenxianpeng."
 
 nav:
   - Home: index.md
