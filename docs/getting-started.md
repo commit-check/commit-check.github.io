@@ -38,4 +38,14 @@ Select the method that best fits your development workflow:
 
     [Get started with CLI →](https://commit-check.github.io/commit-check/){ .md-button .md-button--primary }
 
+- :material-robot: **MCP Server**
+
+    ---
+
+    MCP server exposing commit-check validations as structured tools for AI coding agents
+
+    **Perfect for:** Claude Code, Cursor, Copilot & any MCP-compatible AI agent
+
+    [Get started with MCP →](https://github.com/commit-check/commit-check-mcp){ .md-button .md-button--primary }
+
 </div>

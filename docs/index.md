@@ -30,7 +30,7 @@ title: Commit Check
 
     ---
 
-    GitHub Actions, pre-commit hooks, or the command line — integrate Commit Check anywhere your code lives.
+    GitHub Actions, pre-commit hooks, command line, or MCP server — integrate Commit Check anywhere your code lives.
 
 </div>
 
@@ -153,6 +153,25 @@ title: Commit Check
 
     # And more...
     ```
+
+=== "MCP Server"
+
+    Add to your AI coding agent's MCP config:
+
+    ```json
+    {
+      "mcpServers": {
+        "commit-check": {
+          "command": "uvx",
+          "args": ["commit-check-mcp"]
+        }
+      }
+    }
+    ```
+
+    Then your agent can validate commit messages, branch names, author info, and more with structured results.
+
+    [Learn more about MCP →](https://github.com/commit-check/commit-check-mcp)
 
 ---
 
