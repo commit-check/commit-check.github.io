@@ -8,10 +8,10 @@ copyright: "© Copyright 2022 - 2026, shenxianpeng."
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
-  # - Blog:
-  #     - blog/index.md
-exclude_docs: |
-  blog/**
+  - Blog:
+      - blog/index.md
+# exclude_docs: |
+#   blog/**
 
 theme:
   name: material
