@@ -113,6 +113,10 @@ title: Commit Check
     <img src="https://github.com/OpenEnergyPlatform.png" alt="Open Energy Platform" title="Open Energy Platform">
     <span>Open Energy Platform</span>
   </div>
+  <div class="logo-item">
+    <img src="https://github.com/collective.png" alt="Collective" title="Collective">
+    <span>Collective</span>
+  </div>
 </div>
 
 <!-- <div class="stats-grid">
