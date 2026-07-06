@@ -9,37 +9,30 @@ The commit-check ecosystem is built on a simple architecture: **one policy engin
 multiple enforcement surfaces.** Write your `cchk.toml` once — every surface
 reads the same file.
 
-<div class="grid cards" markdown>
+```mermaid
+graph TB
+    subgraph Policy["📄 cchk.toml"]
+        direction LR
+        Config[One policy file]
+    end
 
--   :material-file-document-outline: **One policy: `cchk.toml`**
+    subgraph Engine["⚙️ commit-check<br/>(Python core)"]
+        direction LR
+        CLI[CLI & pre-commit]
+        API[Python API]
+    end
 
-    ---
+    subgraph Surfaces["🚀 Enforcement surfaces"]
+        Action[commit-check-action<br/>GitHub Action]
+        MCP[commit-check-mcp<br/>MCP Server]
+    end
 
-    Write your rules once, enforce everywhere.
-
-    ↓
-
--   :fontawesome-brands-python: **commit-check** (core engine)
-
-    ---
-
-    CLI · pre-commit · Python API
-
-    ↓
-
--   :material-github: **commit-check-action**
-
-    ---
-
-    GitHub Action → CI Pipeline
-
--   :material-robot: **commit-check-mcp**
-
-    ---
-
-    MCP Server → AI Coding Agent
-
-</div>
+    Config --> Engine
+    CLI --> Action
+    API --> MCP
+    Action --> CI[CI Pipeline]
+    MCP --> Agent[AI Coding Agent]
+```
 
 | Surface | What it does | Get started |
 |---------|-------------|-------------|
