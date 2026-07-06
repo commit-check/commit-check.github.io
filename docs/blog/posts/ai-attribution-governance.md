@@ -25,8 +25,10 @@ But until now, there has been **no tool at the CI level** to enforce whatever
 policy a project chooses.
 
 Commit Check v2.11.0 introduces **AI Attribution Governance** — a
-first-of-its-kind feature that detects known AI tool signatures in commit
+new feature that detects known AI tool signatures in commit
 messages and lets projects decide whether to forbid them outright.
+To our knowledge, no existing tool enforces this kind of policy at the CI
+level.
 
 <!-- more -->
 
@@ -34,12 +36,13 @@ messages and lets projects decide whether to forbid them outright.
 
 The conversation around AI disclosure is no longer theoretical:
 
-- The **Linux kernel** standardized on the `Assisted-by:` trailer format
+- The **Linux kernel** standardized on the `Assisted-by:` trailer format — but deliberately stopped short of CI enforcement. As Sasha Levin noted at the Maintainers Summit, the kernel sets the convention, not the gate.
 - The **Python community** [is actively discussing](https://discuss.python.org/t/should-claude-codes-usage-be-described-in-the-code-docs-somewhere/107969) whether Claude Code usage should be documented
 - **VS Code** [issue #313962](https://github.com/microsoft/vscode/issues/313962) proposes replacing `Co-authored-by` with `Assisted-by` for AI agents
-- **Fedora, Apache, OpenTelemetry, Rocky Linux, QEMU, Gentoo** each have different AI contribution policies
+- **Fedora** requires AI disclosure (recommends the `Assisted-by` trailer). **QEMU** and **Gentoo** go further and **forbid** AI-generated contributions entirely.
 
-But nobody had built a neutral enforcement layer that works in CI — until now.
+Each community defines its own policy — but none provides a neutral
+enforcement layer. That is the gap Commit Check fills.
 
 ## Configuration: a single toggle
 
@@ -71,9 +74,12 @@ Two modes:
 | `"ignore"` | No validation (default, backward compatible) |
 | `"forbid"` | Rejects any commit containing known AI tool signatures |
 
-There is no `require` mode or `ai_trailer_style` option — the signature
-database recognizes all known formats automatically, and the policy is simply
-whether you allow them or not.
+There is no `require` mode in this release — only `ignore` and `forbid`. The
+reason is pragmatic: requiring a `Assisted-by` or similar trailer is a
+substantially harder problem (validating semantics, not just pattern-matching),
+and the most immediate demand from projects is the ability to say **no**. The
+kernel and Fedora communities that want `require` are on the roadmap (see
+[What's next](#whats-next)).
 
 ## Detected AI tool signatures
 
@@ -100,10 +106,10 @@ A `Co-authored-by: Claude` could theoretically be a human named Claude — but
 in practice, AI tools use known noreply email addresses. Commit Check anchors
 its detection to these, so:
 
-✅ `Co-authored-by: Claude <noreply@anthropic.com>` — flagged  
-✅ `Assisted-by: Claude:claude-sonnet-4-20250514 [tools]` — flagged  
-❌ `Co-authored-by: Claude Monet <monet@impressionism.fr>` — **not flagged**  
-❌ `Co-authored-by: Jane Doe <jane@example.com>` — **not flagged**
+🚫 `Co-authored-by: Claude <noreply@anthropic.com>` — **detected**  
+🚫 `Assisted-by: Claude:claude-sonnet-4-20250514 [tools]` — **detected**  
+✅ `Co-authored-by: Claude Monet <monet@impressionism.fr>` — **ignored**  
+✅ `Co-authored-by: Jane Doe <jane@example.com>` — **ignored**
 
 The kernel-style `Assisted-by:` format also handles optional trailing tool
 lists correctly:
@@ -142,7 +148,7 @@ Co-authored-by: Jane Doe <jane@example.com>" | commit-check -m
 
 ## Integration across the ecosystem
 
-The feature is available across every surface of Commit Check:
+The feature is available across nearly every surface of Commit Check:
 
 - **CLI**: `--ai-attribution=forbid`
 - **TOML config**: `[commit] ai_attribution = "forbid"`
@@ -150,16 +156,32 @@ The feature is available across every surface of Commit Check:
 - **Python API**: `validate_message()` returns AI attribution results
 - **`--format json`**: AI check status included in structured output
 - **MCP Server** ([commit-check-mcp](https://github.com/commit-check/commit-check-mcp)): synced in v0.1.7
-- **GitHub Action** ([commit-check-action](https://github.com/commit-check/commit-check-action)): available once the underlying dependency is updated
+- **GitHub Action** ([commit-check-action](https://github.com/commit-check/commit-check-action)): coming in the next release
+
+## Scope and limitations
+
+AI Attribution Governance detects the **default behavior** of AI coding tools
+— the trailers, markers, and metadata they add automatically. It is not
+designed to catch intentional circumvention. If a developer manually removes
+the AI signature before committing, this feature will not flag it.
+
+This is the same trust boundary that every linter operates within:
+`--no-verify` bypasses pre-commit hooks, and a determined author can always
+rewrite history. The goal is to **set a visible, enforceable policy** for the
+standard case — making AI disclosure the path of least resistance — and leave
+intentional evasion to code review and engineering culture.
 
 ## What's next
 
 AI attribution governance in v2.11.0 is the foundation. Future work includes:
 
-1. **PR summaries** — show AI disclosure status per commit in pull requests
-2. **MCP improvements** — AI agents query `describe_validation_rules` to
+1. **`require` mode** — reject commits that are missing an `Assisted-by`
+   trailer, serving projects like the Linux kernel and Fedora that mandate
+   disclosure
+2. **PR summaries** — show AI disclosure status per commit in pull requests
+3. **MCP improvements** — AI agents query `describe_validation_rules` to
    auto-comply before writing a commit
-3. **Richer JSON metadata** — structured AI signature data for SBOM and audit
+4. **Richer JSON metadata** — structured AI signature data for SBOM and audit
    tooling
 
 ## Try it today
@@ -178,6 +200,4 @@ ai_attribution = "forbid"
 
 And let CI enforce your AI disclosure policy — automatically, on every commit.
 
----
 
-*Clean commits. Clear standards. Transparent AI contributions.*
