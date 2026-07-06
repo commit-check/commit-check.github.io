@@ -136,6 +136,48 @@ title: Commit Check
 
 </div>
 
+## Ecosystem
+
+Commit Check is a family of three projects — one engine, multiple surfaces.
+Write your policy **once** in a `cchk.toml`, enforce it **everywhere**.
+
+<div class="grid cards" markdown>
+
+-   :fontawesome-brands-python: __commit-check__ `v2.11.0`
+
+    ---
+
+    **Core engine** — Python CLI, library & pre-commit hooks.
+
+    :material-star: AI attribution governance, message patterns, JSON output
+
+    [:octicons-arrow-right-24: Repo](https://github.com/commit-check/commit-check)
+    [:octicons-arrow-right-24: Docs](https://commit-check.github.io/commit-check/)
+
+-   :material-github: __commit-check-action__ `v2.10.0`
+
+    ---
+
+    **GitHub Action** — seamless CI integration with PR comments.
+
+    :material-star: Windows runner, PR title validation
+
+    [:octicons-arrow-right-24: Repo](https://github.com/commit-check/commit-check-action)
+
+-   :material-robot: __commit-check-mcp__ `v0.1.7`
+
+    ---
+
+    **MCP Server** — structured tools for AI coding agents.
+
+    :material-star: AI attribution governance, message patterns
+
+    [:octicons-arrow-right-24: Repo](https://github.com/commit-check/commit-check-mcp)
+
+</div>
+
+[See all projects →](projects.md){ .md-button }
+
 ## Quick Start
 
 === "GitHub Actions"
