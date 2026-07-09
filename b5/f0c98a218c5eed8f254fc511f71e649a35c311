@@ -1,0 +1,19 @@
+docs/getting-started.md
+  s_bb965166e482f4::t_d57a2fdc2f508d 3-4,8,10,12,14,16-18,20,22,24-28,30,32-34,36,38,40-47,49-50,52,54-55,57-60,62-63,65,67,69-70,72-73,75-336
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b5f0c98a218c5eed8f254fc511f71e649a35c311",
+  "prompts": {},
+  "sessions": {
+    "s_bb965166e482f4": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "019f47fd-e39f-74d2-bcc7-6d6aa4468864",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": null
+    }
+  }
+}
