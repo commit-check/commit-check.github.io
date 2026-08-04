@@ -1,4 +1,14 @@
-name: Deploy Documentation
+name: Deploy redirects
+
+# This site moved to https://commit-check.com. What this repository publishes
+# is a set of redirect stubs, built by scripts/build_redirects.py rather than
+# by mkdocs.
+#
+# The deploy matters more than usual: once this repository is archived, Actions
+# stop running and Pages keeps serving the last artifact indefinitely. The
+# redirect map is therefore checked on every run — a URL left out is a link
+# that breaks permanently.
+
 on:
   push:
     branches: [main]
@@ -19,10 +29,20 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Dependencies
-        run: pipx run nox -s docs
+      # mkdocs is still needed: the check builds the old site and compares the
+      # URLs it produces against the redirect map.
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest -r docs/requirements.txt
 
-      - name: Upload docs build as artifact
+      - name: Check every old URL still has a forwarding address
+        run: pytest tests/ -q
+
+      - name: Build redirects
+        run: python scripts/build_redirects.py
+
+      - name: Upload redirects as artifact
         uses: actions/upload-pages-artifact@v5
         with:
           name: ${{ github.event.repository.name }}_docs
