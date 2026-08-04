@@ -10,6 +10,12 @@ has no redirect table, so a ``<meta refresh>`` plus a ``rel=canonical`` is the
 only mechanism available. The canonical link is what transfers search ranking
 to the new URL; the meta refresh and the script are what move a reader.
 
+Deliberately no ``robots: noindex`` on these stubs. It reads like the tidy thing
+to do, but it contradicts the canonical: one says "consolidate this page onto
+that URL", the other says "drop this page from the index", and a crawler that
+honours the second may never act on the first — or carry the noindex across to
+the target. A migration wants the canonical to be believed.
+
 Why this runs instead of ``mkdocs build``: once this repository is archived,
 Actions stop running and the last deployed artifact is what Pages serves
 forever. That artifact needs to be the redirects, so the redirects have to be
@@ -62,7 +68,6 @@ TEMPLATE = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Moved to commit-check.com</title>
 <link rel="canonical" href="{target}">
-<meta name="robots" content="noindex, follow">
 <meta http-equiv="refresh" content="0; url={target}">
 <script>location.replace("{target}" + location.hash);</script>
 <style>

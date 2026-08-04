@@ -36,7 +36,10 @@ def _urls_the_old_site_served() -> set[str]:
             text=True,
         )
         if result.returncode != 0:
-            pytest.skip(f"mkdocs build unavailable: {result.stderr.strip()[:200]}")
+            # Not a skip. A skip exits pytest 0, the workflow reads that as a
+            # pass and deploys redirects that were never checked against the
+            # site they replace — on the one deploy that cannot be redone.
+            pytest.fail(f"mkdocs build failed: {result.stderr.strip()[:200]}")
         site = Path(tmp)
         urls = set()
         for page in site.rglob("index.html"):
