@@ -34,6 +34,10 @@ verifies the map still covers every URL the old site served. GitHub Pages has
 no server-side redirect table, so each stub is a `rel=canonical` plus a
 `<meta refresh>` — the canonical is what moves search ranking to the new URL.
 
+Two hosts serve this repository, so both are covered: GitHub Pages gets the
+stubs, and `netlify.toml` gives the Netlify project real 301s and stops it
+building the old site from a command configured in its web UI.
+
 ## Why the redirects come before the archive
 
 Archiving a repository makes it read-only and stops its Actions from running,

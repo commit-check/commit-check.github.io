@@ -1,0 +1,33 @@
+# This repository is also wired to a Netlify project, which until now built the
+# mkdocs site from a command configured in Netlify's web UI. That command is
+# invisible from here and outlives any change to the GitHub Actions workflow,
+# so without this file Netlify would keep publishing the old site after the
+# GitHub Pages deploy had been switched to redirects — and the deploy preview
+# on a pull request would show the old site too, which makes the redirects look
+# broken when they are not.
+#
+# Settings here override the UI, so the build is defined in version control.
+
+[build]
+  command = "python scripts/build_redirects.py"
+  publish = "site"
+
+# Netlify, unlike GitHub Pages, can serve a real 301. These take precedence
+# over the stub files the build writes, which stay as the fallback for hosts
+# without a redirect table.
+#
+# Order matters: Netlify takes the first rule that matches, so the one page
+# that did not survive as its own URL has to come before the catch-all.
+[[redirects]]
+  from = "/projects/*"
+  to = "https://commit-check.com/"
+  status = 301
+  force = true
+
+# Everything else kept its path on the new site, so the tail is carried across
+# unchanged. This also covers URLs the stub list does not enumerate.
+[[redirects]]
+  from = "/*"
+  to = "https://commit-check.com/:splat"
+  status = 301
+  force = true
