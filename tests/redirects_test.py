@@ -23,7 +23,7 @@ import pytest
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build_redirects import REDIRECTS  # noqa: E402
+from build_redirects import OLD_PROJECT_DOCS, REDIRECTS, main  # noqa: E402
 
 
 def _urls_the_old_site_served() -> set[str]:
@@ -67,3 +67,24 @@ def test_no_redirect_points_at_a_url_that_never_existed():
         "these redirects are for URLs the site does not serve:\n  "
         + "\n  ".join(invented)
     )
+
+
+def test_old_project_docs_get_stubs_at_their_own_paths(tmp_path, monkeypatch):
+    """The Sphinx pages are files (``cli_args.html``), not directories, and a
+    target that names a section must not get the reader's fragment appended."""
+    import build_redirects
+
+    monkeypatch.setattr(build_redirects, "__file__", str(tmp_path / "scripts" / "x.py"))
+    assert main() == 0
+    site = tmp_path / "site"
+    for old, new in OLD_PROJECT_DOCS.items():
+        rel = old.strip("/")
+        page = site / rel if rel.endswith(".html") else site / rel / "index.html"
+        html = page.read_text(encoding="utf-8")
+        assert f'href="https://commit-check.com{new}"' in html, old
+    assert "t.indexOf(\"#\") < 0" in (site / "commit-check" / "what-is-new.html").read_text()
+
+
+def test_old_project_docs_do_not_shadow_the_mkdocs_redirects():
+    """The two maps must stay disjoint, or one silently overwrites the other."""
+    assert not set(OLD_PROJECT_DOCS) & set(REDIRECTS)

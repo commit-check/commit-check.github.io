@@ -24,6 +24,57 @@
   status = 301
   force = true
 
+# The Sphinx project docs that predate the mkdocs site (OLD_PROJECT_DOCS in
+# scripts/build_redirects.py). Anything else under /commit-check/ was an index
+# or README page, which the home page replaced.
+[[redirects]]
+  from = "/commit-check/cli_args.html"
+  to = "https://commit-check.com/configuration/#command-line-arguments"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/commit-check/what-is-new.html"
+  to = "https://commit-check.com/changelog/#v200"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/commit-check/configuration.html"
+  to = "https://commit-check.com/configuration/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/commit-check/example.html"
+  to = "https://commit-check.com/example/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/commit-check/migration.html"
+  to = "https://commit-check.com/migration/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/commit-check/troubleshoot.html"
+  to = "https://commit-check.com/troubleshoot/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/commit-check/changelog.html"
+  to = "https://commit-check.com/changelog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/commit-check/*"
+  to = "https://commit-check.com/"
+  status = 301
+  force = true
+
 # Everything else kept its path on the new site, so the tail is carried across
 # unchanged. This also covers URLs the stub list does not enumerate.
 [[redirects]]

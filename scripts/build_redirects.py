@@ -57,8 +57,33 @@ SAME_PATH = [
 
 REDIRECTS = {path: path for path in SAME_PATH} | {"/projects/": "/"}
 
+#: The project documentation that came before the mkdocs site: Sphinx pages the
+#: ``commit-check/commit-check`` repository published at
+#: ``commit-check.github.io/commit-check/<page>.html``. That project site is no
+#: longer published, so GitHub Pages serves those paths from *this* site — and
+#: without these they fell through to the 404 fallback and landed every reader
+#: on the home page. They are still linked from the README of every release up
+#: to v2.12 (and so from PyPI), from blog posts and from the Action's docs.
+#:
+#: The page list is the Sphinx ``docs/`` of v2.12.2, the last release built
+#: that way, plus ``cli_args.html``, which sphinx-argparse generated. Each maps
+#: to the page that took over its content; ``what-is-new`` was the v2.0.0
+#: release notes and ``cli_args`` the command-line reference.
+OLD_PROJECT_DOCS = {
+    "/commit-check/": "/",  # also serves /commit-check/index.html
+    "/commit-check/README.html": "/",
+    "/commit-check/cli_args.html": "/configuration/#command-line-arguments",
+    "/commit-check/configuration.html": "/configuration/",
+    "/commit-check/example.html": "/example/",
+    "/commit-check/migration.html": "/migration/",
+    "/commit-check/troubleshoot.html": "/troubleshoot/",
+    "/commit-check/changelog.html": "/changelog/",
+    "/commit-check/what-is-new.html": "/changelog/#v200",
+}
+
 # The fragment is carried across by the script: a reader following a deep link
-# into a page should keep their place. ``location.replace`` rather than
+# into a page should keep their place — unless the target already names its
+# own section, which a second "#" would break. ``location.replace`` rather than
 # ``location.href`` so the stub does not land in the back-button history and
 # trap them in a loop between the two sites.
 TEMPLATE = """<!doctype html>
@@ -69,7 +94,7 @@ TEMPLATE = """<!doctype html>
 <title>Moved to commit-check.com</title>
 <link rel="canonical" href="{target}">
 <meta http-equiv="refresh" content="0; url={target}">
-<script>location.replace("{target}" + location.hash);</script>
+<script>var t = "{target}"; location.replace(t.indexOf("#") < 0 ? t + location.hash : t);</script>
 <style>
   body {{ font-family: system-ui, sans-serif; margin: 4rem auto; max-width: 34rem;
          padding: 0 1rem; line-height: 1.6; }}
@@ -88,9 +113,11 @@ TEMPLATE = """<!doctype html>
 
 def main() -> int:
     site = Path(__file__).resolve().parent.parent / "site"
-    for old, new in REDIRECTS.items():
+    for old, new in (REDIRECTS | OLD_PROJECT_DOCS).items():
         target = NEW_SITE + new
-        page = site / old.strip("/") / "index.html"
+        # "/a/b/" is served from a/b/index.html; "/a/b.html" is the file itself.
+        rel = old.strip("/")
+        page = site / rel if rel.endswith(".html") else site / rel / "index.html"
         page.parent.mkdir(parents=True, exist_ok=True)
         page.write_text(TEMPLATE.format(target=target), encoding="utf-8")
 
@@ -105,7 +132,10 @@ def main() -> int:
     # directories whose names begin with an underscore.
     (site / ".nojekyll").write_text("", encoding="utf-8")
 
-    print(f"wrote {len(REDIRECTS)} redirects + 404 fallback to {site}")
+    print(
+        f"wrote {len(REDIRECTS)} site + {len(OLD_PROJECT_DOCS)} project-docs "
+        f"redirects + 404 fallback to {site}"
+    )
     return 0
 
 
